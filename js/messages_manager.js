@@ -3288,7 +3288,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc + 1);
-                            }, 3000);
+                            }, 5000);
                         },
                         function (error) {
                             console.log("Fwd Error", error);
@@ -3297,7 +3297,7 @@ angular.module('myApp.services')
                             if (error.code === 420) {
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, 5000);
+                                }, 5000 + (1000 * parseInt(/\d+/.exec(error.type))));
                             } else {
                                 /*MtpApiManager.invokeApi('channels.leaveChannel', {
                                  channel: SuperGroups[index]
@@ -3312,7 +3312,7 @@ angular.module('myApp.services')
                                  CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, 3000);
+                                }, 5000);
                             }
                         }
                     );
@@ -3346,7 +3346,7 @@ angular.module('myApp.services')
                     sendText(-SuperGroups[index], text);
                     $timeout(function () {
                         Custom.SendAll(index + 1);
-                    }, 3000);
+                    }, 5000);
 
 
                     /*.then(
