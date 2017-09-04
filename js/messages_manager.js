@@ -3295,6 +3295,7 @@ angular.module('myApp.services')
                             console.log("Fwd Error", chat);
 
                             if (error.code === 420) {
+								CustomStorage.addItem((1000 * parseInt(/\d+/.exec(error.type))), "BotLimited");
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
                                 }, 5000 + (1000 * parseInt(/\d+/.exec(error.type))));
@@ -3322,6 +3323,16 @@ angular.module('myApp.services')
                     var peerID = parseInt(CustomStorage.getItem(CustomStorage.DBs.FwdPeerId));
                     var text = CustomStorage.getItem(CustomStorage.DBs.SendAllText);
                     index = index ? index : 0;
+					
+			
+					var isLimited = Custom.Limits.Limited("BotLimited");
+					if(isLimited){
+						$timeout(function () {
+							Custom.SendAll(index);
+						}, Custom.Limits.getLimit("BotLimited"));
+                        return false;
+					}
+					
                     if (SuperGroups.length < 1 || !CustomAdmin.SendSuper) {
                         return false;
                     }
