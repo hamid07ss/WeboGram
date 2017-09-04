@@ -3645,14 +3645,17 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
       if(!update || !update.message || !update.message.message){
         return false;
       }
+	  
+	  var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
+        if(update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
+            CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
+        }
+	  
         /*var message = update.message;
         var peerID = update.message.from_id;
 
 
-        var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
-        if(update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
-            CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
-        }
+      
 
         var InJoin = CustomStorage.getItem(CustomStorage.DBs.JoinInProccess);
 
