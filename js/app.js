@@ -12,6 +12,8 @@ $(window).ready(function () {
     window.localStorage.setItem('firstLimits', 0);
     window.localStorage.setItem('firstreci', 0);
     window.localStorage.setItem('apiReci-count', 0);
+    window.localStorage.removeItem('SuperGroups');
+	window.localStorage.setItem('disableReci', true);
 });
 
 var extraModules = []

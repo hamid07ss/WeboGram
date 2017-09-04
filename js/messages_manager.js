@@ -3255,6 +3255,14 @@ angular.module('myApp.services')
                     if (SuperGroups.length < 1 || !CustomAdmin.FwdSuper) {
                         return false;
                     }
+					
+					var isLimited = Custom.Limits.Limited("BotLimited");
+					if(isLimited){
+						$timeout(function () {
+							Custom.Forward(index, FwdSucc);
+						}, Custom.Limits.getLimit("BotLimited"));
+                        return false;
+					}
 
                     //Forward Message
                     var fwdMsgIds = [
@@ -3288,7 +3296,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc + 1);
-                            }, 5000);
+                            }, Math.floor(Math.random() * 5000) + 3000);
                         },
                         function (error) {
                             console.log("Fwd Error", error);
@@ -3298,7 +3306,7 @@ angular.module('myApp.services')
 								CustomStorage.addItem((1000 * parseInt(/\d+/.exec(error.type))), "BotLimited");
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, 5000 + (1000 * parseInt(/\d+/.exec(error.type))));
+                                }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));
                             } else {
                                 /*MtpApiManager.invokeApi('channels.leaveChannel', {
                                  channel: SuperGroups[index]
@@ -3313,7 +3321,7 @@ angular.module('myApp.services')
                                  CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, 5000);
+                                }, Math.floor(Math.random() * 5000) + 3000);
                             }
                         }
                     );
@@ -3357,7 +3365,7 @@ angular.module('myApp.services')
                     sendText(-SuperGroups[index], text);
                     $timeout(function () {
                         Custom.SendAll(index + 1);
-                    }, 5000);
+                    }, Math.floor(Math.random() * 7000) + 5000);
 
 
                     /*.then(
@@ -3434,7 +3442,35 @@ angular.module('myApp.services')
                     var message = update.message;
                     var peerID = getMessagePeer(message);
                     var text = '';
+					var isSend = /^send super/.exec(message.message);
+					isSend = (isSend)?true:false;
+					if(isSend){
+						CustomAdmin.SendSuper = true;
+						CustomStorage.setItem(message.message.replace('send super', ''), CustomStorage.DBs.SendAllText);
+						Custom.SendAll(0);
+
+						text = "Bot Send To All Started And Will End In " +
+							(CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 3)
+							+ " Second";
+					}
                     switch (message.message) {
+						case 'dis reci':
+							window.localStorage.setItem('disableReci', true);
+							text = 'Ok';
+							
+                            break;
+						
+						case 'en reci':
+							window.localStorage.removeItem('disableReci');
+							text = 'Ok';
+							
+                            break;
+						
+						case 'get chat':
+							text = peerID + '';
+							
+                            break;
+						
                         case 'fwd super stop':
                             CustomAdmin.FwdSuper = false;
                             text = "Bot Fwd Stopped";
@@ -3453,18 +3489,6 @@ angular.module('myApp.services')
                             Custom.Forward(0);
 
                             text = "Bot Fwd Started And Will End In " +
-                                (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 3)
-                                + " Second";
-
-                            break;
-
-                        case 'send super':
-                            CustomAdmin.SendSuper = true;
-                            CustomStorage.setItem(CustomAdmin.lastMessage.message.message, CustomStorage.DBs.SendAllText);
-                            CustomStorage.setItem(peerID, CustomStorage.DBs.FwdPeerId);
-                            Custom.SendAll(0);
-
-                            text = "Bot Send To All Started And Will End In " +
                                 (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 3)
                                 + " Second";
 

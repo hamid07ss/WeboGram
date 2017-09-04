@@ -3642,43 +3642,23 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
       };
 
     function processUpdate (update, options) {
-      if(!update || !update.message || !update.message.message){
-        return false;
-      }
-	  
-	  var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
-        if(update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
-            CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
-        }
-	  
-        /*var message = update.message;
-        var peerID = update.message.from_id;
-
-
+		if(!update.message){
+			return;
+		}
       
+	  var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
+	  var reciDis = window.localStorage.getItem('disableReci');
+		if(reciDis){
+			var peerID = update.message.from_id;
+			var Admins = [93077939, 231812624, -1137998825, 1137998825];
+			if(Admins.indexOf(peerID) === -1 && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
+			  return false;
+			}		
+		}
 
-        var InJoin = CustomStorage.getItem(CustomStorage.DBs.JoinInProccess);
-
-        if (InJoin !== 'true' || InJoin !== true) {
-            if(!Custom.Limits.Limited(Custom.Limits.types.Join)){
-                var hash = Custom.getLinkHash();
-                if(hash){
-                    Custom.Join(hash);
-                }
-            }
-        }
-
-        //Custom.addLinksHash(message.message);
-
-
-
-        var Admins = [93077939, 231812624];
-        if(Admins.indexOf(peerID) === -1){
-          // return false;
-        }*/
-
-
-
+		if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
+			CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
+		}
 
       options = options || {}
       var channelID = false
@@ -3711,10 +3691,12 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
         return false
       }
 
-      if (update._ == 'updateNewMessage' ||
-          update._ == 'updateEditMessage' ||
-          update._ == 'updateNewChannelMessage' ||
-          update._ == 'updateEditChannelMessage') {
+	  
+	  //update._ == 'updateNewMessage' ||
+        //  update._ == 'updateEditMessage' ||
+      if (update._ == 'updateNewChannelMessage' ||
+          update._ == 'updateEditChannelMessage') {	
+			  
         var message = update.message
         var toPeerID = AppPeersManager.getPeerID(message.to_id)
         var fwdHeader = message.fwd_from || {}
@@ -3723,7 +3705,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
           fwdHeader.channel_id && !AppChatsManager.hasChat(fwdHeader.channel_id, true) ||
           toPeerID > 0 && !AppUsersManager.hasUser(toPeerID) ||
           toPeerID < 0 && !AppChatsManager.hasChat(-toPeerID)) {
-          console.warn(dT(), 'Not enough data for message update', message)
+          //console.warn(dT(), 'Not enough data for message update', message)
           if (channelID && AppChatsManager.hasChat(channelID)) {
             getChannelDifference(channelID)
           } else {

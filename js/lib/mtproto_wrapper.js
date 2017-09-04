@@ -195,26 +195,52 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
             var cachedNetworker
             var stack = (new Error()).stack || 'empty stack'
             var performRequest = function (networker, own) {
-                var firstLimit = parseInt(window.localStorage.getItem('firstLimits'));
+                /*var firstLimit = parseInt(window.localStorage.getItem('firstLimits'));
                 firstLimit = firstLimit ? firstLimit : 0;
                 var firstreci = parseInt(window.localStorage.getItem('firstreci'));
                 firstLimit = firstLimit ? firstLimit : 0;
+				
+				
+                var returned = window.localStorage.getItem('returned');
+                returned = returned ? returned : 0;
 
                 if(method === 'updates.channelDifference' || method === 'updates.getChannelDifference'){
                     return;
                 }
+				//var reciDis = window.localStorage.getItem('disableReci');
+				//if(reciDis && own !== true){
+				//	if(method === 'updates.getDifference'){
+				//		$timeout(function () {
+				//			performRequest(networker, true)
+				//		}, (Math.floor(Math.random() * 10) + 5) * 1000);
+				//		
+				//		return;
+				//	}
+				//}
+				
+				if(own === true){
+					params.date = Date.now();
+				}
+				
 
                 if (own !== true && firstLimit > 4 && method !== 'messages.sendMessage' && method !== 'messages.forwardMessages' &&
-                    method !== 'messages.checkChatInvite' && method !== 'messages.importChatInvite' && method !== 'messages.receivedMessages') {
-                    $timeout(function () {
-                        performRequest(networker, true)
-                    }, (Math.floor(Math.random() * 10) + 5) * 1000);
-                    return;
+                    method !== 'messages.checkChatInvite' && method !== 'messages.importChatInvite') {
+						if(returned < 2){
+							window.localStorage.setItem('returned', returned + 1);
+							return;
+						}else{
+							window.localStorage.setItem('returned', 0);
+							$timeout(function () {
+								performRequest(networker, true)
+							}, (Math.floor(Math.random() * 8) + 5) * 1000);
+							return;
+						}
+				
                 } else {
                     if (firstLimit < 6) {
                         window.localStorage.setItem('firstLimits', firstLimit + 1);
                     }
-                }
+                }*/
 
 
                 var api = (cachedNetworker = networker).wrapApiCall(method, params, options);
