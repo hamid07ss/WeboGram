@@ -3322,7 +3322,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc + 1);
-                            }, Math.floor(Math.random() * 4000) + 3000);
+                            }, Math.floor(Math.random() * 5000) + 3000);
                         },
                         function (error) {
                             console.log("Fwd Error", error);
@@ -3332,7 +3332,7 @@ angular.module('myApp.services')
                                 Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(error.type))));
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, Math.floor(Math.random() * 4000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));
+                                }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));
                             } else {
                                 /*MtpApiManager.invokeApi('channels.leaveChannel', {
                                  channel: SuperGroups[index]
@@ -3347,7 +3347,7 @@ angular.module('myApp.services')
                                  CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, Math.floor(Math.random() * 4000) + 3000);
+                                }, Math.floor(Math.random() * 5000) + 3000);
                             }
                         }
                     );
