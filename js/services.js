@@ -3642,7 +3642,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
       };
 
     function processUpdate (update, options) {
-		if(!update.message){
+		if(!update.message || Custom.Limits.Limited("BotLimited")){
 			return;
 		}
 
