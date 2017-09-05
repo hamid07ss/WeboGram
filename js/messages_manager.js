@@ -3298,9 +3298,9 @@ angular.module('myApp.services')
 
                     FwdSucc = FwdSucc ? FwdSucc : 0;
                     if (index >= SuperGroups.length) {
-                         sendText(peerID, "Bot Fwd Ended With " + FwdSucc + " Send Success");
+                         // sendText(peerID, "Bot Fwd Ended With " + FwdSucc + " Send Success");
                         index = 0;
-                        return;
+                        // return;
                     }
 
                     while (index < SuperGroups.length) {
