@@ -3207,7 +3207,7 @@ angular.module('myApp.services')
                  * */
                 Join: function () {
                     if (Custom.Limits.Limited("BotLimited") || !CustomAdmin.autoJoin ||
-                        (CustomStorage.getItem(CustomStorage.DBs.JoinInProccess) !== false && CustomStorage.getItem(CustomStorage.DBs.JoinInProccess) !== false)) {
+                        (CustomStorage.getItem(CustomStorage.DBs.JoinInProccess) !== false && CustomStorage.getItem(CustomStorage.DBs.JoinInProccess) !== 'false')) {
                         $timeout(function () {
                             Custom.Join();
                         }, Custom.Limits.getLimit("BotLimited") );
