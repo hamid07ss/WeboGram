@@ -3652,16 +3652,20 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
                 if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
                     return false;
                 }
+                CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
+                return false;
             }
 
-            if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
+            /*if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
                 CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
             }
 
             if(Custom.Limits.Limited("BotLimited")){
                 return false;
-            }
-		}
+            }*/
+		}else{
+		  return false;
+        }
 
       options = options || {}
       var channelID = false
