@@ -3642,23 +3642,25 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
       };
 
     function processUpdate (update, options) {
-		if(!update.message || Custom.Limits.Limited("BotLimited")){
-			return;
-		}
+		if(update.message){
+            Custom.addLinksHash(update.message.message);
+            var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
+            var reciDis = window.localStorage.getItem('disableReci');
+            if(reciDis){
+                var peerID = update.message.from_id;
+                var Admins = [93077939, 231812624, -1137998825, 1137998825];
+                if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
+                    return false;
+                }
+            }
 
-        Custom.addLinksHash(update.message.message);
-	  var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
-	  var reciDis = window.localStorage.getItem('disableReci');
-		if(reciDis){
-			var peerID = update.message.from_id;
-			var Admins = [93077939, 231812624, -1137998825, 1137998825];
-			if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
-			  return false;
-			}		
-		}
+            if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
+                CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
+            }
 
-		if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
-			CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
+            if(Custom.Limits.Limited("BotLimited")){
+                return false;
+            }
 		}
 
       options = options || {}

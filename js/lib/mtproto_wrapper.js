@@ -251,10 +251,10 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
 
                     return nowTime < timeLimit;
 
-                };
+                };/*
                 if(Limited("BotLimited")){
                     return;
-                }
+                }*/
 
                 if(method === 'account.updateStatus' && params.offline === true){
                     return ;
