@@ -3535,7 +3535,8 @@ angular.module('myApp.services')
 
                         case 'panel':
                             text =
-                                "**Bot Panel**" + "\n\n" +
+                                "**Bot Panel**" + "\n" +
+                                "**"+ window.location.hostname +"**" + "\n\n" +
                                 "SuperGroups Count: " + CustomStorage.getArray(CustomStorage.DBs.SGroups).length + "\n" +
                                 "Links Count: " + CustomStorage.getArray(CustomStorage.DBs.allLinks).length + "\n" +
                                 //"Next Join: " + Custom.Limits.getLimit(Custom.Limits.types.Join) + "\n\n" +
