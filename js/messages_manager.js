@@ -3213,7 +3213,6 @@ angular.module('myApp.services')
                         }, Custom.Limits.getLimit("BotLimited") );
                         return;
                     }
-                    CustomStorage.setItem(true, CustomStorage.DBs.JoinInProccess);
 
                     var hash = Custom.getLinkHash();
                     if (!hash) {
@@ -3223,6 +3222,7 @@ angular.module('myApp.services')
                         return;
                     }
 
+                    CustomStorage.setItem(true, CustomStorage.DBs.JoinInProccess);
                     MtpApiManager.invokeApi('messages.checkChatInvite', {
                         hash: hash
                     }).then(function (chatInvite) {
