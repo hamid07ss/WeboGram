@@ -3210,6 +3210,7 @@ angular.module('myApp.services')
                         $timeout(function () {
                             Custom.Join();
                         }, Custom.Limits.getLimit("BotLimited") );
+                        return;
                     }
                     CustomStorage.setItem(true, CustomStorage.DBs.JoinInProccess);
 
@@ -3218,6 +3219,7 @@ angular.module('myApp.services')
                         $timeout(function () {
                             Custom.Join();
                         }, Custom.Limits.getLimit("BotLimited") );
+                        return;
                     }
 
                     MtpApiManager.invokeApi('messages.checkChatInvite', {
