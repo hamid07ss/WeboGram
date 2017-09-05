@@ -261,7 +261,7 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
                             }
                         }
                         console.error(dT(), 'Error', error.code, error.type, baseDcID, dcID)
-                        if(error.code === 429){
+                        if(error.code === 420){
                             sleep((1000 * parseInt(/\d+/.exec(error.type))));
                         }
                         if (error.code == 401 && baseDcID == dcID) {
