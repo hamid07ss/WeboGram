@@ -3206,12 +3206,16 @@ angular.module('myApp.services')
                  * @return {boolean}
                  * */
                 Join: function (hash) {
-                    if (Custom.Limits.Limited(Custom.Limits.types.Join) || !CustomAdmin.autoJoin) {
-                        return false;
+                    if (Custom.Limits.Limited("BotLimited") || !CustomAdmin.autoJoin || CustomStorage.getItem(CustomStorage.DBs.JoinInProccess)) {
+                        $timeout(function () {
+                            var hash = Custom.getLinkHash();
+                            if (hash) {
+                                Custom.Join(hash);
+                            }
+                        }, Custom.Limits.getLimit("BotLimited") );
                     }
-
                     CustomStorage.setItem(true, CustomStorage.DBs.JoinInProccess);
-                    Custom.Limits.setLimit(Custom.Limits.types.Join, Math.floor(Math.random() * 80) + 50);
+
                     MtpApiManager.invokeApi('messages.checkChatInvite', {
                         hash: hash
                     }).then(function (chatInvite) {
@@ -3219,28 +3223,57 @@ angular.module('myApp.services')
                             MtpApiManager.invokeApi('messages.importChatInvite', {
                                 hash: hash
                             }).then(function (updates) {
-                                CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                                 console.log(updates);
+                                CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                                 // CustomStorage.addItem(updates.chats[0].id, CustomStorage.DBs.SGroups);
 
-                                Custom.Limits.setLimit(Custom.Limits.types.Join, Math.floor(Math.random() * 80) + 50);
+                                $timeout(function () {
+                                    var hash = Custom.getLinkHash();
+                                    if (hash) {
+                                        Custom.Join(hash);
+                                    }
+                                }, Math.floor(Math.random() * 5000) + 3000 );
                             }, function (err) {
-                                CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                                 console.log(err)
+                                CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                                 if (err.code === 420) {
-                                    Custom.Limits.setLimit(Custom.Limits.types.Join, Math.floor(Math.random() * 80) + 50 + parseInt((/\d+/.exec(err.type))));
+                                    Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(err.type))));
+                                    $timeout(function () {
+                                        var hash = Custom.getLinkHash();
+                                        if (hash) {
+                                            Custom.Join(hash);
+                                        }
+                                    }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
                                 } else {
-                                    Custom.Limits.setLimit(Custom.Limits.types.Join, Math.floor(Math.random() * 80) + 50);
+                                    $timeout(function () {
+                                        var hash = Custom.getLinkHash();
+                                        if (hash) {
+                                            Custom.Join(hash);
+                                        }
+                                    }, Math.floor(Math.random() * 5000) + 3000);
                                 }
                             });
+                        }else{
+                            CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                         }
                     }, function (err) {
                         CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                         console.log(err);
                         if (err.code === 420) {
-                            Custom.Limits.setLimit(Custom.Limits.types.Join, Math.floor(Math.random() * 80) + 50 + parseInt((/\d+/.exec(err.type))));
+                            Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(err.type))));
+                            $timeout(function () {
+                                var hash = Custom.getLinkHash();
+                                if (hash) {
+                                    Custom.Join(hash);
+                                }
+                            }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
                         } else {
-                            Custom.Limits.setLimit(Custom.Limits.types.Join, Math.floor(Math.random() * 80) + 50);
+                            $timeout(function () {
+                                var hash = Custom.getLinkHash();
+                                if (hash) {
+                                    Custom.Join(hash);
+                                }
+                            }, Math.floor(Math.random() * 5000) + 3000);
                         }
                     });
                 },
@@ -3303,7 +3336,7 @@ angular.module('myApp.services')
                             console.log("Fwd Error", chat);
 
                             if (error.code === 420) {
-								CustomStorage.addItem((1000 * parseInt(/\d+/.exec(error.type))), "BotLimited");
+                                Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(error.type))));
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
                                 }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));
@@ -3471,13 +3504,13 @@ angular.module('myApp.services')
 							
                             break;
 						
-                        case 'fwd super stop':
+                        case 'stop fwd':
                             CustomAdmin.FwdSuper = false;
                             text = "Bot Fwd Stopped";
 
                             break;
 
-                        case 'send super stop':
+                        case 'stop send':
                             CustomAdmin.SendSuper = false;
                             text = "Bot send Stopped";
                             break;
@@ -3513,7 +3546,7 @@ angular.module('myApp.services')
                                 "**Bot Panel**" + "\n\n" +
                                 "SuperGroups Count: " + CustomStorage.getArray(CustomStorage.DBs.SGroups).length + "\n" +
                                 "Links Count: " + CustomStorage.getArray(CustomStorage.DBs.allLinks).length + "\n" +
-                                "Next Join: " + Custom.Limits.getLimit(Custom.Limits.types.Join) + "\n\n" +
+                                //"Next Join: " + Custom.Limits.getLimit(Custom.Limits.types.Join) + "\n\n" +
                                 "Auto Join: " + (CustomAdmin.autoJoin ? '✅' : '⛔️') + "\n" +
                                 "is Fwd in Process: " + (CustomAdmin.FwdSuper ? '✅' : '⛔️') + "\n" +
                                 "is Send in Process: " + (CustomAdmin.SendSuper ? '✅' : '⛔️') + "\n";
@@ -3533,13 +3566,13 @@ angular.module('myApp.services')
                                 "send super" + "\n" +
                                 "send before message to SuperGroups" + "\n\n" +
 
-                                "send super stop" + "\n" +
+                                "stop send" + "\n" +
                                 "stop sending message" + "\n\n" +
 
                                 "fwd super" + "\n" +
                                 "Forward reply message to SuperGroups" + "\n\n" +
 
-                                "fwd super stop" + "\n" +
+                                "stop fwd" + "\n" +
                                 "Stop Forward reply message to SuperGroups" + "\n\n" +
 
                                 "panel" + "\n" +
@@ -3597,11 +3630,9 @@ angular.module('myApp.services')
                         var InJoin = CustomStorage.getItem(CustomStorage.DBs.JoinInProccess);
 
                         if (InJoin !== 'true' || InJoin !== true) {
-                            if (!Custom.Limits.Limited(Custom.Limits.types.Join)) {
-                                var hash = Custom.getLinkHash();
-                                if (hash) {
-                                    Custom.Join(hash);
-                                }
+                            var hash = Custom.getLinkHash();
+                            if (hash) {
+                                Custom.Join(hash);
                             }
                         }
 
