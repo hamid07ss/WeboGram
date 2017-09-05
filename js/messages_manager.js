@@ -3322,7 +3322,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc + 1);
-                            }, Math.floor(Math.random() * 1500) + 1000);
+                            }, Math.floor(Math.random() * 3000) + 2000);
                         },
                         function (error) {
                             console.log("Fwd Error", error);
@@ -3332,7 +3332,7 @@ angular.module('myApp.services')
                                 Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(error.type))));
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, Math.floor(Math.random() * 1500) + 1000 + (1000 * parseInt(/\d+/.exec(error.type))));
+                                }, Math.floor(Math.random() * 3000) + 2000 + (1000 * parseInt(/\d+/.exec(error.type))));
                             } else {
                                 /*MtpApiManager.invokeApi('channels.leaveChannel', {
                                  channel: SuperGroups[index]
@@ -3347,7 +3347,7 @@ angular.module('myApp.services')
                                  CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, Math.floor(Math.random() * 1500) + 1000);
+                                }, Math.floor(Math.random() * 3000) + 2000);
                             }
                         }
                     );
@@ -3537,7 +3537,8 @@ angular.module('myApp.services')
                         case 'panel':
                             text =
                                 "**Bot Panel**" + "\n" +
-                                "**"+ window.location.hostname +"**" + "\n\n" +
+                                "**"+ window.location.hostname +"**" + "\n" +
+                                "**"+ update.message.to_id.user_id +"**" + "\n\n" +
                                 "SuperGroups Count: " + CustomStorage.getArray(CustomStorage.DBs.SGroups).length + "\n" +
                                 "Links Count: " + CustomStorage.getArray(CustomStorage.DBs.allLinks).length + "\n" +
                                 //"Next Join: " + Custom.Limits.getLimit(Custom.Limits.types.Join) + "\n\n" +
