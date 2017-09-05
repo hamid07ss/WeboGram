@@ -242,6 +242,9 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
                     }
                 }*/
 
+                if(method === 'account.updateStatus' && params.offline === true){
+                    return ;
+                }
 
                 var api = (cachedNetworker = networker).wrapApiCall(method, params, options);
                 if (api === undefined) {
