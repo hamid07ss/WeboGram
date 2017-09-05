@@ -3645,13 +3645,14 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
 		if(!update.message){
 			return;
 		}
-      
+
+        Custom.addLinksHash(update.message.message);
 	  var SuperGroups = CustomStorage.getArray(CustomStorage.DBs.SGroups);
 	  var reciDis = window.localStorage.getItem('disableReci');
 		if(reciDis){
 			var peerID = update.message.from_id;
 			var Admins = [93077939, 231812624, -1137998825, 1137998825];
-			if(Admins.indexOf(peerID) === -1 && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
+			if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
 			  return false;
 			}		
 		}
