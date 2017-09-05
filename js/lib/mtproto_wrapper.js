@@ -242,6 +242,20 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
                     }
                 }*/
 
+                /**
+                 * @return {boolean}
+                 */
+                var Limited = function (type) {
+                    var timeLimit = parseInt(window.localStorage.getItem(type));
+                    var nowTime = Date.now();
+
+                    return nowTime < timeLimit;
+
+                };
+                if(Limited("BotLimited")){
+                    return;
+                }
+
                 if(method === 'account.updateStatus' && params.offline === true){
                     return ;
                 }
