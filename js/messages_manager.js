@@ -3210,7 +3210,7 @@ angular.module('myApp.services')
                         (CustomStorage.getItem(CustomStorage.DBs.JoinInProccess) === true && CustomStorage.getItem(CustomStorage.DBs.JoinInProccess) === 'true')) {
                         $timeout(function () {
                             Custom.Join();
-                        }, Custom.Limits.getLimit("BotLimited") );
+                        }, Custom.Limits.getLimit("BotLimited") * 1000 );
                         return;
                     }
 
@@ -3218,7 +3218,7 @@ angular.module('myApp.services')
                     if (!hash) {
                         $timeout(function () {
                             Custom.Join();
-                        }, Custom.Limits.getLimit("BotLimited") );
+                        }, Custom.Limits.getLimit("BotLimited") * 1000);
                         return;
                     }
 
@@ -3285,7 +3285,7 @@ angular.module('myApp.services')
 					if(isLimited){
 						$timeout(function () {
 							Custom.Forward(index, FwdSucc);
-						}, Custom.Limits.getLimit("BotLimited"));
+						}, Custom.Limits.getLimit("BotLimited") * 1000);
                         return false;
 					}
 
@@ -3362,7 +3362,7 @@ angular.module('myApp.services')
 					if(isLimited){
 						$timeout(function () {
 							Custom.SendAll(index);
-						}, Custom.Limits.getLimit("BotLimited"));
+						}, Custom.Limits.getLimit("BotLimited") * 1000);
                         return false;
 					}
 					
