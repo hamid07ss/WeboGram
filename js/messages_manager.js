@@ -3241,7 +3241,7 @@ angular.module('myApp.services')
                                 console.log(err)
                                 CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                                 if (err.code === 420) {
-                                    Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(err.type))));
+                                    Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(err.type))));
                                     $timeout(function () {
                                         Custom.Join();
                                     }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
@@ -3258,7 +3258,7 @@ angular.module('myApp.services')
                         CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
                         console.log(err);
                         if (err.code === 420) {
-                            Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(err.type))));
+                            Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(err.type))));
                             $timeout(function () {
                                 Custom.Join();
                             }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
@@ -3328,7 +3328,7 @@ angular.module('myApp.services')
                             console.log("Fwd Error", chat);
 
                             if (error.code === 420) {
-                                Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(error.type))));
+                                Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(error.type))));
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
                                 }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));

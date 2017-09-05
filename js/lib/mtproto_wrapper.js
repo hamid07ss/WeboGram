@@ -265,6 +265,10 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
                         }
                         console.error(dT(), 'Error', error.code, error.type, baseDcID, dcID)
                         if(error.code === 420){
+                            var nowTime = Date.now();
+                            var limitTime = nowTime + parseInt(parseInt(/\d+/.exec(error.type)) * 1000);
+
+                            window.localStorage.setItem("BotLimited", limitTime);
                             sleep((1000 * parseInt(/\d+/.exec(error.type))));
                         }
                         if (error.code == 401 && baseDcID == dcID) {
