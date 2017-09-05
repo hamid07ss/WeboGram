@@ -3653,7 +3653,9 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
                     return false;
                 }
                 CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
-                return false;
+                if(Admins.indexOf(peerID) === -1){
+                    return false;
+                }
             }
 
             /*if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
