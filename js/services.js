@@ -3652,10 +3652,12 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
                 if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
                     return false;
                 }
-                CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
-                if(Admins.indexOf(peerID) === -1){
-                    return false;
+                if(update.message.to_id){
+                    CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
                 }
+                /*if(Admins.indexOf(peerID) === -1){
+                    return false;
+                }*/
             }
 
             /*if(update.message && update.message.to_id && update.message.to_id.channel_id && SuperGroups.indexOf(update.message.to_id.channel_id) === -1){
