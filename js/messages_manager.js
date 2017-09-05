@@ -3205,16 +3205,20 @@ angular.module('myApp.services')
                  *
                  * @return {boolean}
                  * */
-                Join: function (hash) {
+                Join: function () {
                     if (Custom.Limits.Limited("BotLimited") || !CustomAdmin.autoJoin || CustomStorage.getItem(CustomStorage.DBs.JoinInProccess)) {
                         $timeout(function () {
-                            var hash = Custom.getLinkHash();
-                            if (hash) {
-                                Custom.Join(hash);
-                            }
+                            Custom.Join();
                         }, Custom.Limits.getLimit("BotLimited") );
                     }
                     CustomStorage.setItem(true, CustomStorage.DBs.JoinInProccess);
+
+                    var hash = Custom.getLinkHash();
+                    if (!hash) {
+                        $timeout(function () {
+                            Custom.Join();
+                        }, Custom.Limits.getLimit("BotLimited") );
+                    }
 
                     MtpApiManager.invokeApi('messages.checkChatInvite', {
                         hash: hash
@@ -3228,10 +3232,7 @@ angular.module('myApp.services')
                                 // CustomStorage.addItem(updates.chats[0].id, CustomStorage.DBs.SGroups);
 
                                 $timeout(function () {
-                                    var hash = Custom.getLinkHash();
-                                    if (hash) {
-                                        Custom.Join(hash);
-                                    }
+                                    Custom.Join();
                                 }, Math.floor(Math.random() * 5000) + 3000 );
                             }, function (err) {
                                 console.log(err)
@@ -3239,17 +3240,11 @@ angular.module('myApp.services')
                                 if (err.code === 420) {
                                     Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(err.type))));
                                     $timeout(function () {
-                                        var hash = Custom.getLinkHash();
-                                        if (hash) {
-                                            Custom.Join(hash);
-                                        }
+                                        Custom.Join();
                                     }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
                                 } else {
                                     $timeout(function () {
-                                        var hash = Custom.getLinkHash();
-                                        if (hash) {
-                                            Custom.Join(hash);
-                                        }
+                                        Custom.Join();
                                     }, Math.floor(Math.random() * 5000) + 3000);
                                 }
                             });
@@ -3262,17 +3257,11 @@ angular.module('myApp.services')
                         if (err.code === 420) {
                             Custom.Limits.setLimit("BotLimited", (1000 * parseInt(/\d+/.exec(err.type))));
                             $timeout(function () {
-                                var hash = Custom.getLinkHash();
-                                if (hash) {
-                                    Custom.Join(hash);
-                                }
+                                Custom.Join();
                             }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
                         } else {
                             $timeout(function () {
-                                var hash = Custom.getLinkHash();
-                                if (hash) {
-                                    Custom.Join(hash);
-                                }
+                                Custom.Join();
                             }, Math.floor(Math.random() * 5000) + 3000);
                         }
                     });
@@ -3630,10 +3619,7 @@ angular.module('myApp.services')
                         var InJoin = CustomStorage.getItem(CustomStorage.DBs.JoinInProccess);
 
                         if (InJoin !== 'true' || InJoin !== true) {
-                            var hash = Custom.getLinkHash();
-                            if (hash) {
-                                Custom.Join(hash);
-                            }
+                            Custom.Join();
                         }
 
                         if (CustomAdmin.isAdmin(peerID) || CustomAdmin.isAdmin(message.from_id)) {
