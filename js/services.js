@@ -3668,7 +3668,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
                 return false;
             }*/
 		}else{
-		  return false;
+		  //` return false;
         }
 
       options = options || {}

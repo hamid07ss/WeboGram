@@ -3298,8 +3298,9 @@ angular.module('myApp.services')
 
                     FwdSucc = FwdSucc ? FwdSucc : 0;
                     if (index >= SuperGroups.length) {
-                        // sendText(peerID, "Bot Fwd Ended With " + FwdSucc + " Send Success");
+                         sendText(peerID, "Bot Fwd Ended With " + FwdSucc + " Send Success");
                         index = 0;
+                        return;
                     }
 
                     while (index < SuperGroups.length) {
@@ -3321,7 +3322,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc + 1);
-                            }, Math.floor(Math.random() * 5000) + 3000);
+                            }, Math.floor(Math.random() * 1500) + 1000);
                         },
                         function (error) {
                             console.log("Fwd Error", error);
@@ -3331,7 +3332,7 @@ angular.module('myApp.services')
                                 Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(error.type))));
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));
+                                }, Math.floor(Math.random() * 1500) + 1000 + (1000 * parseInt(/\d+/.exec(error.type))));
                             } else {
                                 /*MtpApiManager.invokeApi('channels.leaveChannel', {
                                  channel: SuperGroups[index]
@@ -3346,7 +3347,7 @@ angular.module('myApp.services')
                                  CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                                 $timeout(function () {
                                     Custom.Forward(index + 1, FwdSucc);
-                                }, Math.floor(Math.random() * 5000) + 3000);
+                                }, Math.floor(Math.random() * 1500) + 1000);
                             }
                         }
                     );
@@ -3514,7 +3515,7 @@ angular.module('myApp.services')
                             Custom.Forward(0);
 
                             text = "Bot Fwd Started And Will End In " +
-                                (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 3)
+                                (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 1.5)
                                 + " Second";
 
                             break;
@@ -3631,6 +3632,11 @@ angular.module('myApp.services')
                         }
 
                         Custom.addLinksHash(message.message);
+                        /*doFlushHistory(peerID).then(function (res) {
+                            console.log(res);
+                        }, function (res) {
+                            console.log(res);
+                        });*/
 
                         // return false;
 
