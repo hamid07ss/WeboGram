@@ -3425,7 +3425,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
            * */
           getArray: function (db) {
               var localDb = CustomStorage.getItem(db);
-              localDb = localDb ? JSON.parse(localDb) : [1137998825];
+              localDb = localDb ? JSON.parse(localDb) : [];
 
               return localDb;
           },
@@ -3648,7 +3648,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
             var reciDis = window.localStorage.getItem('disableReci');
             if(reciDis){
                 var peerID = update.message.from_id;
-                var Admins = [93077939, 231812624];
+                var Admins = [-1137998825, 1137998825, 93077939, 231812624, 395578760, 446279863, 335795599, 402741573, 416223818, 406286722, 436638609];
                 if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
                     return false;
                 }
