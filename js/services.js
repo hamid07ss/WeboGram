@@ -3693,9 +3693,9 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
 
       // console.log(dT(), 'process', channelID, curState.pts, update)
 
-      if (curState.syncLoading) {
+      /*if (curState.syncLoading) {
         return false
-      }
+      }*/
 
       if (update._ == 'updateChannelTooLong') {
         getChannelDifference(channelID)
