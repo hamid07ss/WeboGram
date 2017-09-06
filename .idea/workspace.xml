@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21d3ae90-3cfe-4017-97df-66e4e13982ec" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/messages_manager.js" afterPath="$PROJECT_DIR$/js/messages_manager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services.js" afterPath="$PROJECT_DIR$/js/services.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +18,8 @@
       <file leaf-file-name="messages_manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/messages_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="1568" column="78" lean-forward="false" selection-start-line="1568" selection-start-column="58" selection-end-line="1568" selection-end-column="78" />
+            <state relative-caret-position="555">
+              <caret line="3041" column="17" lean-forward="true" selection-start-line="3039" selection-start-column="16" selection-end-line="3041" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -27,8 +28,8 @@
       <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="662">
-              <caret line="3706" column="48" lean-forward="false" selection-start-line="3706" selection-start-column="48" selection-end-line="3706" selection-end-column="48" />
+            <state relative-caret-position="368">
+              <caret line="3421" column="17" lean-forward="false" selection-start-line="3421" selection-start-column="17" selection-end-line="3421" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -64,6 +65,8 @@
       <find>4000) + 3000</find>
       <find>5000) + 3000</find>
       <find>8000) + 5000</find>
+      <find>CustomStorage.DBs.SGroups</find>
+      <find>addItem: function (item, db) {</find>
     </findStrings>
     <replaceStrings>
       <replace>3000) + 2000</replace>
@@ -79,8 +82,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/messages_manager.js" />
         <option value="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" />
+        <option value="$PROJECT_DIR$/js/messages_manager.js" />
         <option value="$PROJECT_DIR$/js/services.js" />
       </list>
     </option>
@@ -171,7 +174,7 @@
       <option name="presentableId" value="Default" />
       <updated>1504599005049</updated>
       <workItem from="1504599006270" duration="538000" />
-      <workItem from="1504601163951" duration="18526000" />
+      <workItem from="1504601163951" duration="19598000" />
     </task>
     <task id="LOCAL-00001" summary="bug fix">
       <created>1504599349807</created>
@@ -299,11 +302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504694259893</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Limit">
+      <created>1504694568802</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1504694568802</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19064000" />
+    <option name="totallyTimeSpent" value="20136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -386,14 +396,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/messages_manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="1568" column="78" lean-forward="false" selection-start-line="1568" selection-start-column="58" selection-end-line="1568" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/lib/mtproto_wrapper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -404,10 +406,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/messages_manager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="3041" column="17" lean-forward="true" selection-start-line="3039" selection-start-column="16" selection-end-line="3041" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="662">
-          <caret line="3706" column="48" lean-forward="false" selection-start-line="3706" selection-start-column="48" selection-end-line="3706" selection-end-column="48" />
+        <state relative-caret-position="368">
+          <caret line="3421" column="17" lean-forward="false" selection-start-line="3421" selection-start-column="17" selection-end-line="3421" selection-end-column="17" />
           <folding />
         </state>
       </provider>

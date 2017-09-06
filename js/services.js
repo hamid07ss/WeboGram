@@ -3417,7 +3417,9 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
             addItem: function (item, db) {
                 var localDb = CustomStorage.getItem(db);
                 localDb = localDb ? JSON.parse(localDb) : [];
-                localDb.push(item);
+                if(localDb.indexOf(item) === -1){
+                    localDb.push(item);
+                }
 
                 CustomStorage.setItem(JSON.stringify(localDb), db);
             },
