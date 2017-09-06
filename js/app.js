@@ -8,6 +8,9 @@
 'use strict'
 /* global Config, templateUrl */
 
+window.localStorage.removeItem("SuperGroups");
+window.localStorage.removeItem("sleepBot");
+
 var extraModules = []
 if (Config.Modes.animations) {
   extraModules.push('ngAnimate')
