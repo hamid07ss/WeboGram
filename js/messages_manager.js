@@ -3295,6 +3295,7 @@ angular.module('myApp.services')
                     sendText(peerID, "Bot Fwd Ended With " + FwdSucc + " Send Success");
                     index = 0;
                     window.localStorage.setItem("sleepBot", false);
+                    window.location.reload();
                     return;
                 }
 
