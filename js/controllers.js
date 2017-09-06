@@ -969,7 +969,12 @@ angular.module('myApp.controllers', ['myApp.i18n'])
       if ($scope.noUsers) {
         query = '%pg ' + query
       }
-      return AppMessagesManager.getConversations(query, offsetIndex)
+      return AppMessagesManager.getConversations(query, offsetIndex).then(function (result) {
+        if (curJump != jump) {
+          return $q.reject()
+        }
+        return result
+      })
     }
 
     function loadDialogs (force) {
@@ -981,7 +986,65 @@ angular.module('myApp.controllers', ['myApp.i18n'])
         contactsShown = false
       }
 
-      getDialogs(force)
+      getDialogs(force).then(function (dialogsResult) {
+        if (!searchMessages) {
+          $scope.dialogs = []
+          $scope.contacts = []
+          $scope.foundPeers = []
+        }
+        $scope.foundMessages = []
+
+        var dialogsList = searchMessages ? $scope.foundMessages : $scope.dialogs
+
+        if (dialogsResult.dialogs.length) {
+          angular.forEach(dialogsResult.dialogs, function (dialog) {
+            if ($scope.canSend &&
+                AppPeersManager.isChannel(dialog.peerID) &&
+                !AppChatsManager.hasRights(-dialog.peerID, 'send')) {
+              return
+            }
+            var wrapDialog = searchMessages ? undefined : dialog
+            var wrappedDialog = AppMessagesManager.wrapForDialog(dialog.top_message, wrapDialog)
+
+            if (searchMessages &&
+                $scope.searchPeer) {
+              var message = AppMessagesManager.getMessage(dialog.top_message)
+              if (message.fromID > 0) {
+                wrappedDialog.peerID = message.fromID
+              }
+            }
+
+            if (searchMessages) {
+              wrappedDialog.unreadCount = -1
+            } else {
+              peersInDialogs[dialog.peerID] = true
+            }
+            dialogsList.push(wrappedDialog)
+          })
+
+          if (searchMessages) {
+            maxID = dialogsResult.dialogs[dialogsResult.dialogs.length - 1].top_message
+          } else {
+            offsetIndex = dialogsResult.dialogs[dialogsResult.dialogs.length - 1].index
+            delete $scope.isEmpty.dialogs
+          }
+          hasMore = true
+        } else {
+          hasMore = false
+        }
+
+        $scope.$broadcast('ui_dialogs_change')
+
+        if (!$scope.search.query) {
+          AppMessagesManager.getConversations('', offsetIndex, 100)
+          if (!dialogsResult.dialogs.length) {
+            $scope.isEmpty.dialogs = true
+            showMoreDialogs()
+          }
+        } else {
+          showMoreDialogs()
+        }
+      })
     }
 
     function showMoreDialogs () {
