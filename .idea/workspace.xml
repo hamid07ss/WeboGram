@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="21d3ae90-3cfe-4017-97df-66e4e13982ec" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" afterPath="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/messages_manager.js" afterPath="$PROJECT_DIR$/js/messages_manager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services.js" afterPath="$PROJECT_DIR$/js/services.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,17 +24,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="3673" column="31" lean-forward="false" selection-start-line="3673" selection-start-column="31" selection-end-line="3673" selection-end-column="31" />
+            <state relative-caret-position="662">
+              <caret line="3706" column="48" lean-forward="false" selection-start-line="3706" selection-start-column="48" selection-end-line="3706" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mtproto_wrapper.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mtproto_wrapper.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/lib/mtproto_wrapper.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
@@ -82,8 +80,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/js/messages_manager.js" />
-        <option value="$PROJECT_DIR$/js/services.js" />
         <option value="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" />
+        <option value="$PROJECT_DIR$/js/services.js" />
       </list>
     </option>
   </component>
@@ -173,7 +171,7 @@
       <option name="presentableId" value="Default" />
       <updated>1504599005049</updated>
       <workItem from="1504599006270" duration="538000" />
-      <workItem from="1504601163951" duration="18217000" />
+      <workItem from="1504601163951" duration="18526000" />
     </task>
     <task id="LOCAL-00001" summary="bug fix">
       <created>1504599349807</created>
@@ -294,11 +292,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504692520333</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Limit">
+      <created>1504694259893</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1504694259893</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18755000" />
+    <option name="totallyTimeSpent" value="19064000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -381,14 +386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="3673" column="31" lean-forward="false" selection-start-line="3673" selection-start-column="31" selection-end-line="3673" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/messages_manager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="708">
@@ -404,6 +401,14 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="3706" column="48" lean-forward="false" selection-start-line="3706" selection-start-column="48" selection-end-line="3706" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

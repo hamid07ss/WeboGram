@@ -3701,9 +3701,12 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
             }
 
 
+
             var sleepBot =  window.localStorage.getItem("sleepBot");
             if(sleepBot === 'true'){
-                return;
+                if(Admins.indexOf(peerID) === -1){
+                    return false;
+                }
             }
 
 
