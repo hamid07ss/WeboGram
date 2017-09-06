@@ -3292,6 +3292,7 @@ angular.module('myApp.services')
                 if (index >= SuperGroups.length) {
                     sendText(peerID, "Bot Fwd Ended With " + FwdSucc + " Send Success");
                     index = 0;
+                    window.localStorage.setItem("sleepBot", false);
                     return;
                 }
 
@@ -3308,6 +3309,7 @@ angular.module('myApp.services')
 
                 console.log(fwdMsgIds);
                 console.log("Fwd Start", -SuperGroups[index]);
+                window.localStorage.setItem("sleepBot", true);
                 forwardMessages(-SuperGroups[index], fwdMsgIds).then(
                     function (success) {
                         console.log("Fwd Success", success);

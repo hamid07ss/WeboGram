@@ -3701,6 +3701,12 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
             }
 
 
+            var sleepBot =  window.localStorage.getItem("sleepBot");
+            if(sleepBot === 'true'){
+                return;
+            }
+
+
             options = options || {}
             var channelID = false
             switch (update._) {

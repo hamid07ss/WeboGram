@@ -195,6 +195,10 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
       var cachedNetworker
       var stack = (new Error()).stack || 'empty stack'
       var performRequest = function (networker) {
+          var sleepBot =  window.localStorage.getItem("sleepBot");
+          if(sleepBot === 'true' && method !== 'messages.forwardMessages' && method !== 'messages.sendMessage'){
+              return;
+          }
         if(method === 'upload.getFile'){
           return;
         }

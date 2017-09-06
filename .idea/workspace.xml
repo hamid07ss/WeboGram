@@ -5,6 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" afterPath="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/messages_manager.js" afterPath="$PROJECT_DIR$/js/messages_manager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services.js" afterPath="$PROJECT_DIR$/js/services.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,21 +16,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="messages_manager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="messages_manager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/messages_manager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="3470" column="86" lean-forward="false" selection-start-line="3470" selection-start-column="86" selection-end-line="3470" selection-end-column="86" />
+            <state relative-caret-position="708">
+              <caret line="1568" column="78" lean-forward="false" selection-start-line="1568" selection-start-column="58" selection-end-line="1568" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mtproto_wrapper.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="3673" column="31" lean-forward="false" selection-start-line="3673" selection-start-column="31" selection-end-line="3673" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mtproto_wrapper.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/lib/mtproto_wrapper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="202" column="33" lean-forward="false" selection-start-line="202" selection-start-column="33" selection-end-line="202" selection-end-column="33" />
+            <state relative-caret-position="459">
+              <caret line="198" column="109" lean-forward="false" selection-start-line="198" selection-start-column="109" selection-end-line="198" selection-end-column="109" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -70,9 +81,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/js/messages_manager.js" />
         <option value="$PROJECT_DIR$/js/services.js" />
         <option value="$PROJECT_DIR$/js/lib/mtproto_wrapper.js" />
-        <option value="$PROJECT_DIR$/js/messages_manager.js" />
       </list>
     </option>
   </component>
@@ -162,7 +173,7 @@
       <option name="presentableId" value="Default" />
       <updated>1504599005049</updated>
       <workItem from="1504599006270" duration="538000" />
-      <workItem from="1504601163951" duration="16542000" />
+      <workItem from="1504601163951" duration="18217000" />
     </task>
     <task id="LOCAL-00001" summary="bug fix">
       <created>1504599349807</created>
@@ -276,11 +287,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504689641730</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Limit">
+      <created>1504692520333</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1504692520333</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17080000" />
+    <option name="totallyTimeSpent" value="18755000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -324,7 +342,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="bug fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix" />
+    <MESSAGE value="Limit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Limit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -354,14 +373,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="3652" column="22" lean-forward="false" selection-start-line="3652" selection-start-column="22" selection-end-line="3652" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/lib/i18n.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -370,21 +381,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/lib/mtproto_wrapper.js">
+    <entry file="file://$PROJECT_DIR$/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="202" column="33" lean-forward="false" selection-start-line="202" selection-start-column="33" selection-end-line="202" selection-end-column="33" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="101">
+          <caret line="3673" column="31" lean-forward="false" selection-start-line="3673" selection-start-column="31" selection-end-line="3673" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/messages_manager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="3470" column="86" lean-forward="false" selection-start-line="3470" selection-start-column="86" selection-end-line="3470" selection-end-column="86" />
+        <state relative-caret-position="708">
+          <caret line="1568" column="78" lean-forward="false" selection-start-line="1568" selection-start-column="58" selection-end-line="1568" selection-end-column="78" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/lib/mtproto_wrapper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="198" column="109" lean-forward="false" selection-start-line="198" selection-start-column="109" selection-end-line="198" selection-end-column="109" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
