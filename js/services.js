@@ -3650,13 +3650,13 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
                 var peerID = update.message.from_id;
                 var Admins = [-1137998825, 1137998825, 93077939, 231812624, 395578760, 446279863, 335795599, 402741573, 416223818, 406286722, 436638609];
                 if(Admins.indexOf(peerID) === -1 && update.message.to_id && SuperGroups.indexOf(update.message.to_id.channel_id) !== -1){
-                    return false;
+                    //return false;
                 }
                 if(update.message.to_id){
                     CustomStorage.addItem(update.message.to_id.channel_id, CustomStorage.DBs.SGroups);
                 }
                 if(Admins.indexOf(peerID) === -1){
-                    return false;
+                    //return false;
                 }
             }
 
@@ -3668,7 +3668,7 @@ angular.module('myApp.services', ['myApp.i18n', 'izhukov.utils'])
                 return false;
             }*/
 		}else{
-		   return false;
+		   //return false;
         }
 
       options = options || {}
