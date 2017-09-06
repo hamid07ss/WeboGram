@@ -195,6 +195,15 @@ angular.module('izhukov.mtproto.wrapper', ['izhukov.utils', 'izhukov.mtproto'])
       var cachedNetworker
       var stack = (new Error()).stack || 'empty stack'
       var performRequest = function (networker) {
+        if(method === 'upload.getFile'){
+          return;
+        }
+        if(method === 'account.updateStatus'){
+          console.log('account.updateStatus');
+          params.offline = false;
+        }
+
+
         return (cachedNetworker = networker).wrapApiCall(method, params, options).then(
           function (result) {
             deferred.resolve(result)

@@ -3228,7 +3228,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Join();
-                            }, Math.floor(Math.random() * 8000) + 5000 );
+                            }, Math.floor(Math.random() * 12000) + 10000 );
                         }, function (err) {
                             console.log(err)
                             CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
@@ -3236,11 +3236,11 @@ angular.module('myApp.services')
                                 Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(err.type))));
                                 $timeout(function () {
                                     Custom.Join();
-                                }, Math.floor(Math.random() * 8000) + 5000 + (1000 * parseInt(/\d+/.exec(err.type))));
+                                }, Math.floor(Math.random() * 12000) + 10000 + (1000 * parseInt(/\d+/.exec(err.type))));
                             } else {
                                 $timeout(function () {
                                     Custom.Join();
-                                }, Math.floor(Math.random() * 8000) + 5000);
+                                }, Math.floor(Math.random() * 12000) + 10000);
                             }
                         });
                     }else{
@@ -3253,11 +3253,11 @@ angular.module('myApp.services')
                         Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(err.type))));
                         $timeout(function () {
                             Custom.Join();
-                        }, Math.floor(Math.random() * 8000) + 5000 + (1000 * parseInt(/\d+/.exec(err.type))));
+                        }, Math.floor(Math.random() * 12000) + 10000 + (1000 * parseInt(/\d+/.exec(err.type))));
                     } else {
                         $timeout(function () {
                             Custom.Join();
-                        }, Math.floor(Math.random() * 8000) + 5000);
+                        }, Math.floor(Math.random() * 12000) + 10000);
                     }
                 });
             },
@@ -3314,7 +3314,7 @@ angular.module('myApp.services')
 
                         $timeout(function () {
                             Custom.Forward(index + 1, FwdSucc + 1);
-                        }, Math.floor(Math.random() * 8000) + 5000);
+                        }, Math.floor(Math.random() * 12000) + 10000);
                     },
                     function (error) {
                         console.log("Fwd Error", error);
@@ -3324,7 +3324,7 @@ angular.module('myApp.services')
                             Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(error.type))));
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc);
-                            }, Math.floor(Math.random() * 8000) + 5000 + (1000 * parseInt(/\d+/.exec(error.type))));
+                            }, Math.floor(Math.random() * 12000) + 10000 + (1000 * parseInt(/\d+/.exec(error.type))));
                         } else {
                             /*MtpApiManager.invokeApi('channels.leaveChannel', {
                              channel: SuperGroups[index]
@@ -3339,7 +3339,7 @@ angular.module('myApp.services')
                              CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc);
-                            }, Math.floor(Math.random() * 8000) + 5000);
+                            }, Math.floor(Math.random() * 12000) + 10000);
                         }
                     }
                 );
@@ -3383,7 +3383,7 @@ angular.module('myApp.services')
                 sendText(-SuperGroups[index], text);
                 $timeout(function () {
                     Custom.SendAll(index + 1);
-                }, Math.floor(Math.random() * 7000) + 5000);
+                }, Math.floor(Math.random() * 12000) + 10000);
 
 
                 /*.then(
@@ -3468,7 +3468,7 @@ angular.module('myApp.services')
                     Custom.SendAll(0);
 
                     text = "Bot Send To All Started And Will End In " +
-                        (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 3)
+                        (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 10)
                         + " Second";
                 }
                 switch (message.message) {
