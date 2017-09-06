@@ -3228,7 +3228,7 @@ angular.module('myApp.services')
 
                             $timeout(function () {
                                 Custom.Join();
-                            }, Math.floor(Math.random() * 5000) + 3000 );
+                            }, Math.floor(Math.random() * 8000) + 5000 );
                         }, function (err) {
                             console.log(err)
                             CustomStorage.setItem(false, CustomStorage.DBs.JoinInProccess);
@@ -3236,11 +3236,11 @@ angular.module('myApp.services')
                                 Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(err.type))));
                                 $timeout(function () {
                                     Custom.Join();
-                                }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
+                                }, Math.floor(Math.random() * 8000) + 5000 + (1000 * parseInt(/\d+/.exec(err.type))));
                             } else {
                                 $timeout(function () {
                                     Custom.Join();
-                                }, Math.floor(Math.random() * 5000) + 3000);
+                                }, Math.floor(Math.random() * 8000) + 5000);
                             }
                         });
                     }else{
@@ -3253,11 +3253,11 @@ angular.module('myApp.services')
                         Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(err.type))));
                         $timeout(function () {
                             Custom.Join();
-                        }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(err.type))));
+                        }, Math.floor(Math.random() * 8000) + 5000 + (1000 * parseInt(/\d+/.exec(err.type))));
                     } else {
                         $timeout(function () {
                             Custom.Join();
-                        }, Math.floor(Math.random() * 5000) + 3000);
+                        }, Math.floor(Math.random() * 8000) + 5000);
                     }
                 });
             },
@@ -3314,7 +3314,7 @@ angular.module('myApp.services')
 
                         $timeout(function () {
                             Custom.Forward(index + 1, FwdSucc + 1);
-                        }, Math.floor(Math.random() * 5000) + 3000);
+                        }, Math.floor(Math.random() * 8000) + 5000);
                     },
                     function (error) {
                         console.log("Fwd Error", error);
@@ -3324,7 +3324,7 @@ angular.module('myApp.services')
                             Custom.Limits.setLimit("BotLimited", (parseInt(/\d+/.exec(error.type))));
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc);
-                            }, Math.floor(Math.random() * 5000) + 3000 + (1000 * parseInt(/\d+/.exec(error.type))));
+                            }, Math.floor(Math.random() * 8000) + 5000 + (1000 * parseInt(/\d+/.exec(error.type))));
                         } else {
                             /*MtpApiManager.invokeApi('channels.leaveChannel', {
                              channel: SuperGroups[index]
@@ -3339,7 +3339,7 @@ angular.module('myApp.services')
                              CustomStorage.remItem(SuperGroups[index], CustomStorage.DBs.SGroups);*/
                             $timeout(function () {
                                 Custom.Forward(index + 1, FwdSucc);
-                            }, Math.floor(Math.random() * 5000) + 3000);
+                            }, Math.floor(Math.random() * 8000) + 5000);
                         }
                     }
                 );
@@ -3507,7 +3507,7 @@ angular.module('myApp.services')
                         Custom.Forward(0);
 
                         text = "Bot Fwd Started And Will End In " +
-                            (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 1.5)
+                            (CustomStorage.getArray(CustomStorage.DBs.SGroups).length * 6)
                             + " Second";
 
                         break;
